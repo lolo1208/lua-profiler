@@ -1,0 +1,32 @@
+{
+  "name": "lua-profiler",
+  "version": "1.0.0",
+  "description": "Lua Profiler",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild .",
+    "pack": "electron-packager . --overwrite --out=out",
+    "packmac": "electron-packager . --overwrite --out=out --platform=mas --arch=x64",
+    "packwin": "electron-packager . --overwrite --out=out --platform=win32 --arch=x64"
+  },
+  "repository": "https://github.com/lolo1208/lua-profiler",
+  "keywords": [
+    "Unity",
+    "ToLua",
+    "Lua",
+    "Profiler"
+  ],
+  "author": "LOLO",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-packager": "^12.2.0",
+    "electron-rebuild": "^1.8.2"
+  },
+  "dependencies": {
+    "electron": "^2.0.0",
+    "element-ui": "^2.4.8",
+    "node-kcp": "^1.0.9",
+    "vue": "^2.5.17"
+  }
+}

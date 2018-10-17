@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lua Profiler</title>
+    <link rel="stylesheet" href="../../node_modules/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body onresize="onResize()">
+
+
+<div id="startup" v-show="visible">
+    <span class="label-ip">IP：</span>
+    <el-input size="medium" v-model="ip" :disabled="true" style="width: 150px;"></el-input>
+
+    <span class="label-port">port：</span>
+    <el-input size="medium" v-model="port" :disabled="portTextDisabled" style="width: 65px;"></el-input>
+
+    <span class="label-conv">conv：</span>
+    <el-input size="medium" v-model="port" :disabled="true" style="width: 65px;"></el-input>
+
+    <el-button id="startupBtn"
+               style="margin-left: 40px; width: 90px; font-size: 16px"
+               @click="clickStartupBtn"
+               :type="startupBtnType">启动
+    </el-button>
+</div>
+
+
+<div id="profiler">
+    <div id="nav">
+        <p id="startBtn" onclick="clickStartBtn()">
+            <i class="el-icon-warning"></i>
+            <span>程序未启动</span>
+        </p>
+
+        <div id="clientList">
+            <p class="clientItem" onclick="selectClientItem(0)">123.123.123.123</p>
+        </div>
+    </div>
+
+    <div id="timeline">
+        <div id="tlControls">
+            <el-button size="mini" type="info"
+                       @click="clickClearBtn"
+                       :disabled="clearBtnDisabled"
+                       round>Clear
+            </el-button>
+
+            <el-button size="mini" type="danger"
+                       @click="clickStopBtn"
+                       :disabled="stopBtnDisabled"
+                       round>Stop
+            </el-button>
+
+            <el-button size="mini" type="info"
+                       @click="clickLoadBtn"
+                       round>Load
+            </el-button>
+
+            <el-button size="mini" type="success"
+                       @click="clickSaveBtn"
+                       :disabled="saveBtnDisabled"
+                       round>Save
+            </el-button>
+
+            <span id="frameText">Frame: 1234 - 5678</span>
+            <el-button size="mini" type="info" @click="clickCurrentBtn" round>Current</el-button>
+
+            <p id="frameTimeText" class="tlText" style="top: 72px">16.7 µs</p>
+            <p id="memText" class="tlText" style="top: 149px">245.3 MB</p>
+        </div>
+        <div id="tlCanvasDiv">
+            <canvas id="tlCanvas"></canvas>
+        </div>
+    </div>
+
+    <div id="details">
+        <div class="details-item details-item-title">
+            <div class="details-item-title-name" onclick="changeDetailsSort('name', this)">
+                Overview <i class="el-icon-arrow-up"></i>
+            </div>
+            <div class="details-item-title-time" onclick="changeDetailsSort('total', this)">
+                <i class="el-icon-arrow-down" style="display: none;"></i> Total
+            </div>
+            <div class="details-item-title-time" onclick="changeDetailsSort('self', this)">
+                <i class="el-icon-arrow-down" style="display: none;"></i> Self
+            </div>
+            <div class="details-item-title-calls" onclick="changeDetailsSort('calls', this)">
+                <i class="el-icon-arrow-down" style="display: none;"></i> Calls
+            </div>
+        </div>
+
+        <div class="detailsTreeC">
+            <el-tree ref="detailsTree"
+                     class="details-tree"
+                     :data="detailsData"
+                     :props="detailsProps"
+                     :expand-on-click-node="false"
+                     @current-change="currentTreeItemChanged"
+                     @node-expand="refreshDetailsItemBg"
+                     @node-collapse="refreshDetailsItemBg"
+            >
+
+                <div class="custom-tree-node details-item" slot-scope="{ node, data }">
+                    <div class="details-item-name">{{ data.name + placeholder }}</div>
+                    <div class="details-item-time">{{ data.total + ` µs` }}</div>
+                    <div class="details-item-time">{{ data.self + ` µs` }}</div>
+                    <div class="details-item-calls">{{ data.calls }}</div>
+                </div>
+
+            </el-tree>
+        </div>
+    </div>
+</div>
+
+
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script src="../../node_modules/element-ui/lib/index.js"></script>
+
+<script src="startup.js"></script>
+<script src="dataSync.js"></script>
+<script src="timeline.js"></script>
+<script src="details.js"></script>
+<script src="profiler.js"></script>
+<script src="ipc.js"></script>
+
+
+</body>
+</html>

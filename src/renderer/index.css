@@ -1,0 +1,266 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    background-color: #555;
+    font-family: "Tahoma", "Microsoft Yahei";
+    cursor: default;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* -webkit-scrollbar */
+div::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: #F5F5F5;
+}
+
+div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
+
+div#profiler {
+    position: absolute;
+    top: 62px;
+    bottom: 0;
+    width: 100%;
+}
+
+/*
+
+
+ * 启动条 */
+div#startup {
+    position: absolute;
+    top: 10px;
+    left: calc((100% - 610px) / 2);
+    color: #fff;
+}
+
+.label-ip {
+    display: inline;
+}
+
+.label-port {
+    display: inline;
+    margin-left: 30px;
+}
+
+.label-conv {
+    display: inline;
+    margin-left: 10px;
+}
+
+/*
+
+
+ * 时间轴 */
+div#timeline {
+    position: absolute;
+    left: 181px;
+    right: 0;
+    height: 200px;
+    background-color: #303133;
+}
+
+div#tlControls {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 0;
+    z-index: 1;
+    font-size: 12px;
+}
+
+span#frameText {
+    display: inline-block;
+    width: calc(100% - 390px);
+    padding-right: 10px;
+    text-align: right;
+    color: #C0C4CC;
+}
+
+p.tlText {
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    color: #F2F6FC;
+    text-shadow: 1px 1px #000;
+    pointer-events: none;
+}
+
+div#tlCanvasDiv {
+    position: absolute;
+    width: 100%;
+    top: 38px;
+    bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+canvas#tlCanvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/*
+
+
+ * 详情 */
+div#details {
+    position: absolute;
+    left: 181px;
+    top: 200px;
+    right: 0;
+    bottom: 0;
+
+    /*background-color: #555;*/
+}
+
+div.detailsTreeC {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 37px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* details - item */
+div.details-item {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #DDD;
+    cursor: default;
+}
+
+div.details-item-title {
+    height: 35px;
+    line-height: 35px;
+    border-top: solid 1px #303133;
+    border-bottom: solid 1px #303133;
+    color: #E4E7ED;
+    cursor: pointer;
+}
+
+div.details-item-title-name {
+    flex: 1;
+    padding-left: 10px;
+    border-right: solid 1px #303133;
+}
+
+div.details-item-title-time {
+    min-width: 65px;
+    max-width: 65px;
+    padding-right: 10px;
+    text-align: right;
+    border-right: solid 1px #303133;
+}
+
+div.details-item-title-calls {
+    min-width: 60px;
+    max-width: 60px;
+    text-align: center;
+}
+
+div.details-item-name {
+    flex: 1;
+    overflow: hidden;
+}
+
+div.details-item-time {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: right;
+}
+
+div.details-item-calls {
+    min-width: 90px;
+    max-width: 90px;
+    text-align: center;
+}
+
+.details-tree {
+    padding-top: 2px;
+    background-color: #555;
+}
+
+/* item - mouse over */
+.el-tree-node__content:hover {
+    background-color: #409EFF;
+}
+
+/* item - selected */
+.el-tree-node:focus > .el-tree-node__content {
+    background-color: #409EFF;
+}
+
+/*
+
+
+ * 左侧导航 */
+div#nav {
+    position: absolute;
+    width: 180px;
+    height: calc(100% - 1px);
+    border-top: solid 1px #303133;
+    border-right: solid 1px #303133;
+    background-color: #444;
+}
+
+p#startBtn {
+    line-height: 70px;
+    text-align: center;
+    color: #FFF;
+    background-color: #F56C6C;
+    cursor: pointer;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 0.8s;
+    -webkit-transition-timing-function: ease;
+}
+
+div#clientList {
+    height: calc(100% - 71px);
+    border-top: solid 1px #303133;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+p.clientItem {
+    line-height: 40px;
+    font-size: 12px;
+    white-space: nowrap;
+    text-align: center;
+    color: #BBB;
+    border-bottom: solid 1px #303133;
+}
+
+p.clientItem:hover {
+    background-color: #555;
+}
+
+p.clientItemSelected {
+    background-color: #555555;
+    color: #FFF;
+    font-size: 13px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+}
