@@ -2,7 +2,8 @@ require('./server');
 
 
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, Menu} = require('electron');
+Menu.setApplicationMenu(null);
 
 const os = require('os');
 const {getIP} = require('./functions');
@@ -15,7 +16,9 @@ let mainWindow;
 
 function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({minWidth: 800, minHeight: 600});
+    mainWindow = new BrowserWindow({
+        minWidth: 800, minHeight: 600
+    });
 
     mainWindow.webContents.once('dom-ready', () => {
         mainWindow.webContents.send('dom-ready', getIP());
