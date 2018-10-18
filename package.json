@@ -5,7 +5,7 @@
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",
-    "rebuild": "electron-rebuild .",
+    "rebuild": "electron-rebuild -f -w .",
     "pack": "electron-packager . --overwrite --out=out",
     "packmac": "electron-packager . --overwrite --out=out --platform=mas --arch=x64",
     "packwin": "electron-packager . --overwrite --out=out --platform=win32 --arch=x64"

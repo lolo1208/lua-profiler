@@ -2,7 +2,7 @@
 
 本程序用于统计和展现 Lua 代码耗时以及调用次数。
 
-数据收集可参考[ShibaInu](https://github.com/lolo1208/unity3d-lolo)框架的 Lua Profiler 部分
+数据收集可参考 [ShibaInu](https://github.com/lolo1208/unity3d-lolo) 框架的 Lua Profiler 部分
 
 ## To Use
 

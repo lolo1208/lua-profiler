@@ -16,11 +16,15 @@ let clients = {};
 let server = null;
 
 
+// 获取当前 IPv4 地址
 let IP = '';
-let en0 = os.networkInterfaces().en0;
-for (let i = 0; i < en0.length; i++)
-    if (en0[i].family === 'IPv4')
-        IP = en0[i].address;
+let niFaces = os.networkInterfaces();
+for (let key in niFaces) {
+    let val = niFaces[key];
+    for (let i = 0; i < val.length; i++)
+        if (val[i].family === 'IPv4')
+            IP = val[i].address;
+}
 
 
 /**
