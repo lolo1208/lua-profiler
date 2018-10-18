@@ -4,27 +4,16 @@
 
 
 const fs = require('fs');
-const os = require('os');
 const kcp = require('node-kcp');
 const dgram = require('dgram');
 
 const {BrowserWindow, ipcMain, dialog} = require('electron');
 
+
 let CONV = 0;
 let updateTimer = null;
 let clients = {};
 let server = null;
-
-
-// 获取当前 IPv4 地址
-let IP = '';
-let niFaces = os.networkInterfaces();
-for (let key in niFaces) {
-    let val = niFaces[key];
-    for (let i = 0; i < val.length; i++)
-        if (val[i].family === 'IPv4')
-            IP = val[i].address;
-}
 
 
 /**

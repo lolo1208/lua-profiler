@@ -29,3 +29,18 @@ npm start
 npm run pack
 ```
 
+## 可能会遇到的问题
+
+以下问题均由网络环境造成，以 Windows x64 为例。
+
+#### - 下载 electron 模块速度过慢或连接超时
+添加环境变量：
+ELECTRON_MIRROR = https://npm.taobao.org/mirrors/electron/
+
+#### - 运行 rebuild 时报错
+错误 iojs.lib : fatal error LNK1106
+
+可能是由于 iojs.lib 文件没下载完整造成的。
+
+手动下载 [iojs.lib](https://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist/v2.0.11/win-x64/iojs.lib) 放到 C:\Users\用户名\.electron-gyp\.node-gyp\iojs-2.0.11\x64\ 目录中
+

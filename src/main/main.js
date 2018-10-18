@@ -1,10 +1,11 @@
 require('./server');
 
 
-const os = require('os');
-
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron');
+
+const os = require('os');
+const {getIP} = require('./functions');
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -17,15 +18,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({minWidth: 800, minHeight: 600});
 
     mainWindow.webContents.once('dom-ready', () => {
-        let IP = '';
-        let niFaces = os.networkInterfaces();
-        for (let key in niFaces) {
-            let val = niFaces[key];
-            for (let i = 0; i < val.length; i++)
-                if (val[i].family === 'IPv4')
-                    IP = val[i].address;
-        }
-        mainWindow.webContents.send('dom-ready', IP);
+        mainWindow.webContents.send('dom-ready', getIP());
     });
 
     // and load the index.html of the app.
