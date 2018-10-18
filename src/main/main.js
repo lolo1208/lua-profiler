@@ -3,7 +3,6 @@ require('./server');
 
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, Menu} = require('electron');
-Menu.setApplicationMenu(null);
 
 const os = require('os');
 const {getIP} = require('./functions');
@@ -37,6 +36,9 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null;
     });
+
+    // Hide Menu(Windows)
+    Menu.setApplicationMenu(null);
 }
 
 // This method will be called when Electron has finished
