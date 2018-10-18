@@ -64,6 +64,15 @@ div#startup {
     margin-left: 10px;
 }
 
+.help-icon {
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.tools-icon{
+    cursor: pointer;
+}
+
 /*
 
 

@@ -226,3 +226,13 @@ ipcMain.on('save-file', function (event, jsonStr) {
 });
 
 
+/**
+ * 打开开发者工具
+ */
+ipcMain.on('open-tools', function (event) {
+    let win = BrowserWindow.getAllWindows()[0];
+    win.openDevTools({mode: 'detach'});
+
+});
+
+

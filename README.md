@@ -26,7 +26,7 @@ npm run rebuild
 npm start
 
 
-# Release app
+# Release the app
 npm run pack
 ```
 

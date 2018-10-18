@@ -2,6 +2,7 @@
  * Created by LOLO on 2018/8/29.
  */
 
+const {shell} = require('electron')
 
 let MAX_PROFILER_TOP = 62;
 let curProfilerTop = MAX_PROFILER_TOP;
@@ -39,6 +40,22 @@ const startupFading = function () {
  */
 const clickStartupBtn = function () {
     ipcRenderer.send('startup-or-shutdown', startup.port);
+};
+
+
+/**
+ * 点击帮助按钮
+ */
+const clickHelpBtn = function () {
+    shell.openExternal('https://github.com/lolo1208/lua-profiler');
+};
+
+
+/**
+ * 点击工具按钮
+ */
+const clickToolsBtn = function () {
+    ipcRenderer.send('open-tools');
 };
 
 

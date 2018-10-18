@@ -34,9 +34,6 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null;
     });
-
-    // 打开开发者工具
-    // mainWindow.openDevTools({mode: 'detach'});
 }
 
 // This method will be called when Electron has finished
