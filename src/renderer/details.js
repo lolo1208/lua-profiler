@@ -18,6 +18,21 @@ const currentTreeItemChanged = function (data, node) {
 };
 
 
+/**
+ * 鼠标移到 item 上，显示行号
+ * @param dom
+ */
+const treeItemMouseOver = function (dom) {
+    let line = dom.getElementsByTagName('code')[0].innerText;
+    dom = document.getElementById('details-line');
+    dom.style.display = '';
+    dom.innerText = `line: ${line}`;
+};
+const treeItemMouseOut = function () {
+    document.getElementById('details-line').style.display = 'none';
+};
+
+
 const refreshDetailsItemBg = function (count) {
     let items = document.getElementsByClassName("el-tree-node");
     let offset = 0;

@@ -5,6 +5,11 @@
 
 const os = require('os');
 
+const {BrowserWindow} = require('electron');
+
+
+//
+
 
 /**
  * 获取本机 IPv4 地址
@@ -24,5 +29,33 @@ function getIP() {
 }
 
 
+/**
+ * 发送消息到渲染进程
+ * @param channel
+ * @param args
+ */
+function sendToRender(channel, ...args) {
+    try {
+        let wc = BrowserWindow.getAllWindows()[0].webContents;
+        wc.send(channel, ...args);
+    } catch (err) {
+    }
+}
+
+
+/**
+ * 空函数
+ */
+function emptyFn() {
+}
+
+
 //
-module.exports = {getIP};
+
+
+//
+module.exports = {
+    getIP,
+    sendToRender,
+    emptyFn,
+};

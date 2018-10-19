@@ -10,17 +10,16 @@
 
 
 <div id="startup" v-show="visible">
+    <el-switch active-text="TCP" inactive-text="UDP" inactive-color="#ff4949"
+               v-model="isTCP" :disabled="startupDisabled"></el-switch>
+
     <span class="label-ip">IP：</span>
-    <el-input size="medium" v-model="ip" :disabled="true" style="width: 150px;"></el-input>
+    <el-input size="mini" v-model="ip" :disabled="true" style="width: 130px;"></el-input>
 
-    <span class="label-port">port：</span>
-    <el-input size="medium" v-model="port" :disabled="portTextDisabled" style="width: 65px;"></el-input>
-
-    <span class="label-conv">conv：</span>
-    <el-input size="medium" v-model="port" :disabled="true" style="width: 65px;"></el-input>
+    <span class="label-port">:</span>
+    <el-input size="mini" v-model="port" :disabled="startupDisabled" style="width: 70px;"></el-input>
 
     <el-button id="startupBtn"
-               style="margin-left: 40px; width: 90px; font-size: 16px"
                @click="clickStartupBtn"
                :type="startupBtnType">启动
     </el-button>
@@ -82,6 +81,7 @@
         <div class="details-item details-item-title">
             <div class="details-item-title-name" onclick="changeDetailsSort('name', this)">
                 Overview <i class="el-icon-arrow-up"></i>
+                <p id="details-line"></p>
             </div>
             <div class="details-item-title-time" onclick="changeDetailsSort('total', this)">
                 <i class="el-icon-arrow-down" style="display: none;"></i> Total
@@ -100,12 +100,18 @@
                      :data="detailsData"
                      :props="detailsProps"
                      :expand-on-click-node="false"
+                     empty-text=""
                      @current-change="currentTreeItemChanged"
                      @node-expand="refreshDetailsItemBg"
                      @node-collapse="refreshDetailsItemBg"
             >
 
-                <div class="custom-tree-node details-item" slot-scope="{ node, data }">
+                <div class="custom-tree-node details-item"
+                     slot-scope="{ node, data }"
+                     onmouseover="treeItemMouseOver(this)"
+                     onmouseout="treeItemMouseOut()"
+                >
+                    <code style="display: none">{{ data.line }}</code>
                     <div class="details-item-name">{{ data.name + placeholder }}</div>
                     <div class="details-item-time">{{ data.total + ` µs` }}</div>
                     <div class="details-item-time">{{ data.self + ` µs` }}</div>

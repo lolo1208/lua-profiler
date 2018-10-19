@@ -23,6 +23,7 @@ const appendFrameData = function (data) {
     // 记录新增函数信息
     for (let key in data.d.n) {
         let info = data.d.n[key];
+        if (info.s.startsWith('@')) info.s = info.s.substr(1);
         fnNameList[key] = `${info.s}.${info.n}`;
         fnLineList[key] = info.l;
     }

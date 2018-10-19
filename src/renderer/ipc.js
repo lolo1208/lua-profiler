@@ -21,6 +21,7 @@ const connK2I = {};
 ipcRenderer.on('load-file-completed', function (event, path, jsonStr) {
     let idx = addClientItem({name: path, originalData: JSON.parse(jsonStr)});
     selectClientItem(idx);
+    showOrHideStartup(false);
 });
 
 
@@ -49,7 +50,7 @@ ipcRenderer.on('startup-or-shutdown', function (event, state) {
 
     let startupBtn = document.getElementById('startupBtn');
     startupBtn.innerText = inStartup ? '停止' : '启动';
-    startup.portTextDisabled = inStartup;
+    startup.startupDisabled = inStartup;
     startup.startupBtnType = inStartup ? 'danger' : 'success';
 
     showOrHideStartup(!inStartup);
@@ -78,11 +79,23 @@ ipcRenderer.on('append-data', function (event, key, data) {
     if (!info.connected) return;// 已经手动断开连接了
 
     data = JSON.parse(data);
-
     info.originalData.push(data);
 
     // 是当前选中的会话
     if (info === curClientItemInfo) appendFrameData(data);
+});
+
+
+/**
+ * 有会话断开了连接（TCP）
+ */
+ipcRenderer.on('disconnect', function (event, key) {
+    let index = connK2I[key];
+    let info = clientList[index];
+    info.connected = false;
+
+    // 是当前选中的会话
+    if (info === curClientItemInfo) profiler.stopBtnDisabled = true;
 });
 
 

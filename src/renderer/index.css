@@ -52,16 +52,19 @@ div#startup {
 
 .label-ip {
     display: inline;
+    margin-left: 40px;
 }
 
 .label-port {
     display: inline;
-    margin-left: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-.label-conv {
-    display: inline;
-    margin-left: 10px;
+#startupBtn {
+    width: 90px;
+    margin-left: 40px;
+    font-size: 15px;
 }
 
 .help-icon {
@@ -69,7 +72,7 @@ div#startup {
     cursor: pointer;
 }
 
-.tools-icon{
+.tools-icon {
     cursor: pointer;
 }
 
@@ -137,8 +140,6 @@ div#details {
     top: 200px;
     right: 0;
     bottom: 0;
-
-    /*background-color: #555;*/
 }
 
 div.detailsTreeC {
@@ -211,6 +212,12 @@ div.details-item-calls {
 .details-tree {
     padding-top: 2px;
     background-color: #555;
+}
+
+p#details-line {
+    float: right;
+    color: #CCC;
+    margin-right: 10px;
 }
 
 /* item - mouse over */

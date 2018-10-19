@@ -2,7 +2,7 @@
  * Created by LOLO on 2018/8/29.
  */
 
-const {shell} = require('electron')
+const {shell} = require('electron');
 
 let MAX_PROFILER_TOP = 62;
 let curProfilerTop = MAX_PROFILER_TOP;
@@ -39,7 +39,7 @@ const startupFading = function () {
  * 点击启动按钮
  */
 const clickStartupBtn = function () {
-    ipcRenderer.send('startup-or-shutdown', startup.port);
+    ipcRenderer.send('startup-or-shutdown', startup.port, startup.isTCP);
 };
 
 
@@ -76,11 +76,12 @@ const startup = new Vue({
 
     data: function () {
         return {
+            isTCP: true,
             ip: '123.123.123.123',
             port: '1208',
             visible: true,
             startupBtnType: 'success',
-            portTextDisabled: false,
+            startupDisabled: false,
         }
     }
 });

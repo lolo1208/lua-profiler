@@ -42,6 +42,7 @@ const clickClearBtn = function () {
 const clickStopBtn = function () {
     profiler.stopBtnDisabled = true;
     curClientItemInfo.connected = false;
+    ipcRenderer.send('disconnect');
 };
 
 
