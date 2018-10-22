@@ -57,6 +57,7 @@ const drawTimeline = function () {
         let time = Math.min(data.time, MAX_TIME);
         ratio = time / MAX_TIME;
         h = frameH * ratio;
+        if (isNaN(h) || h < 2) h = 2;
         y = frameH - h;
         ctx.fillStyle = '#1095D2';
         ctx.fillRect(x, y, 1, h);

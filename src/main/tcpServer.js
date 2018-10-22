@@ -66,7 +66,7 @@ const onData = function (data) {
     // 通知渲染进程
     sendToRender('append-data', this._key, str);
 
-    if (this._data.length >= 4) this.onData(null);
+    if (this._data.length >= 4) onData.call(this, null);
 };
 
 
