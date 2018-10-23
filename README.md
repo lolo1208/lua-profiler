@@ -2,9 +2,21 @@
 
 本程序用于统计和展现 Lua 代码耗时以及调用次数。
 
+基于 [electron](https://github.com/electron/electron) 和 [element-ui](https://github.com/ElemeFE/element) 实现，可运行在 Windows 和 MacOS。
+
 数据收集可参考:
 
    - Unity [C#](https://github.com/lolo1208/unity3d-lolo/tree/master/Assets/Framework/ShibaInu/Utils/Profiling) 以及 [Lua](https://github.com/lolo1208/unity3d-lolo/blob/master/Assets/Framework/ShibaInu/Lua/Utils/Optimize/Profiler.lua)
+
+
+## 运行时截图
+在游戏中调用代码：[c#]ShibaInu.LuaProfiler.Console() 打开控制台界面。
+
+![console](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/1.jpg)
+
+点击 BEGIN 连接到本程序，开始数据收集。
+
+![app](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/2.png)
 
 
 ## To Use
@@ -40,12 +52,14 @@ npm run pack
 以 Windows x64 为例：
 
 #### * 下载 electron 模块速度过慢或连接超时。
+
 添加镜像地址到环境变量：
 ```
 ELECTRON_MIRROR = https://npm.taobao.org/mirrors/electron/
 ```
 
 #### * 运行 rebuild 时报错
+
 iojs.lib : fatal error LNK1106.
 
 可能是由于 iojs.lib 文件没下载完整造成的。
