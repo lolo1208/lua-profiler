@@ -73,12 +73,14 @@ const parseFnInfo = function (key, data, parent) {
         calls: data.n,
     };
 
-    // 在父节点中减去当前节点的总耗时
     if (parent) {
+        // 在父节点中减去当前节点的总耗时
         parent.self -= item.total;
         if (parent.self < 0) parent.self = 0;// 四舍五入的原因
         if (!parent.children) parent.children = [];
         parent.children.push(item);
+
+        // 在父节点
     }
 
     // 解析子节点
@@ -127,6 +129,7 @@ const loadOriginalData = function (data) {
     clear();
     for (let i = 0; i < data.length; i++)
         appendFrameData(data[i]);
+    isRenderAll = true;
 };
 
 

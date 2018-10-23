@@ -9,6 +9,7 @@
 const clickCurrentBtn = function () {
     isCurrent = true;
     renderDirty = true;
+    isRenderAll = true;
     drawTimeline();
 };
 

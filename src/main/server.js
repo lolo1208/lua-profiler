@@ -5,7 +5,7 @@
 
 const fs = require('fs');
 
-const {BrowserWindow, ipcMain, dialog} = require('electron');
+const {BrowserWindow, app, ipcMain, dialog} = require('electron');
 const {startTCP, closeTCP} = require('./tcpServer');
 const {startUDP, closeUDP} = require('./udpServer');
 
@@ -28,6 +28,15 @@ ipcMain.on('startup-or-shutdown', function (event, port, isTCP) {
         isTCP ? startTCP(port) : startUDP(port);
     }
     running = !running;
+});
+
+
+/**
+ * 关闭窗口时（但是并没有退出程序）
+ */
+app.on('window-all-closed', function () {
+    closeTCP();
+    closeUDP();
 });
 
 

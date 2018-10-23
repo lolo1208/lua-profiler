@@ -12,6 +12,9 @@ let currentX = 0;// 当前位置
 
 let renderDirty = true;// 是否需要渲染标记
 let drawHandle = null;
+let showDetailsHandle = null;
+let isRenderAll = false;
+let isMouseDown = false;
 
 
 const drawTimeline = function () {
@@ -35,20 +38,29 @@ const drawTimeline = function () {
     canvas.style.width = `${cvsWidth}px`;
     canvas.width = cvsWidth;
 
-    let cvsHeight = cavansDiv.getBoundingClientRect().height;
+    let cvsRect = cavansDiv.getBoundingClientRect();
+    let cvsHeight = cvsRect.height;
     if (cvsWidth > tlWidth) cvsHeight -= cavansDiv.offsetHeight - cavansDiv.clientHeight;
     canvas.style.height = `${cvsHeight}px`;
     canvas.height = cvsHeight;
 
 
-    // 画出完整帧数据
+    // 画出帧数据
     let [frameH, memH] = [Math.floor((cvsHeight - 5) * 0.65), Math.floor((cvsHeight - 5) * 0.35)];
     let memY = frameH + 5;
     let MAX_TIME = aveFrameTime * 1.8;
     let MAX_MEM = aveMem * 1.8;
 
+    // 只绘制当前显示范围内的数据
+    let [i, len] = [0, totalFrames];
+    if (!isRenderAll && totalFrames > tlWidth) {
+        i = cavansDiv.scrollLeft;
+        len = i + cvsRect.width;
+    }
+    isRenderAll = false;
+
     let offsetX = (tlWidth > totalFrames) ? (tlWidth - totalFrames) : 0;
-    for (let i = 0; i < totalFrames; i++) {
+    for (; i < len; i++) {
         let data = frameData[i];
         let x = i + offsetX;
         let ratio, h, y;
@@ -83,7 +95,8 @@ const drawTimeline = function () {
 
     // 查看当前帧
     if (isCurrent) {
-        cavansDiv.scrollLeft = cavansDiv.scrollWidth;// 滚动到最后
+        if (curClientItemInfo.connected)
+            cavansDiv.scrollLeft = cavansDiv.scrollWidth;// 滚动到最后
         beginX = currentX = totalFrames - 1;
     }
     else {
@@ -120,7 +133,11 @@ const drawTimeline = function () {
 
 
         // 更新选中帧的函数调用信息
-        refreshDetails(begin, end);
+        clearTimeout(showDetailsHandle);
+        if (isMouseDown)
+            showDetailsHandle = setTimeout(refreshDetails, 50, begin, end);
+        else
+            refreshDetails(begin, end);
     }
 };
 
@@ -146,6 +163,7 @@ const canvasMouseDown = function (event) {
     canvas.onmouseout = canvasMouseEnd;
     beginX = currentX = getX(event.layerX);
     renderDirty = true;
+    isMouseDown = true;
 };
 
 const canvasMouseMove = function (event) {
@@ -158,6 +176,7 @@ const canvasMouseEnd = function (event) {
     canvas.onmousemove = canvas.onmouseup = canvas.onmouseout = null;
     currentX = getX(event.layerX);
     renderDirty = true;
+    isMouseDown = false;
 };
 
 const getX = function (x) {

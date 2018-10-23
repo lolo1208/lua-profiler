@@ -111,7 +111,13 @@ ipcRenderer.on('disconnect', function (event, key) {
 ipcRenderer.once('dom-ready', (event, ip) => {
     clear();
     document.getElementById('clientList').innerText = '';
+    document.addEventListener('mousedown', stageMouseDown);
     startup.ip = ip;
+
 });
+
+const stageMouseDown = function () {
+    isRenderAll = renderDirty = true;
+};
 
 

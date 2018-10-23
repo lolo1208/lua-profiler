@@ -14,7 +14,7 @@ let sortIcon = null;
 
 //
 const currentTreeItemChanged = function (data, node) {
-    console.log(data.name);
+    // console.log(data.name);
 };
 
 
