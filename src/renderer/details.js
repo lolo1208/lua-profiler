@@ -85,7 +85,7 @@ const appendDetails = function (source, data) {
     let notFind = true;
     for (let i = 0; i < source.length; i++) {
         let item = source[i];
-        if (item.name === data.name && item.line === data.line) {
+        if (item.key === data.key) {
             notFind = false;
             item.self += data.self;
             item.total += data.total;

@@ -24,6 +24,7 @@ const appendFrameData = function (data) {
     for (let key in data.d.n) {
         let info = data.d.n[key];
         if (info.s.startsWith('@')) info.s = info.s.substr(1);
+        if (info.n === '') info.n = '[unknown]';
         fnNameList[key] = `${info.s}.${info.n}`;
         fnLineList[key] = info.l;
     }
@@ -66,6 +67,7 @@ const appendFrameData = function (data) {
 
 const parseFnInfo = function (key, data, parent) {
     let item = {
+        key: key,
         name: fnNameList[key],
         line: fnLineList[key],
         self: data.t,
@@ -74,13 +76,13 @@ const parseFnInfo = function (key, data, parent) {
     };
 
     if (parent) {
-        // 在父节点中减去当前节点的总耗时
-        parent.self -= item.total;
-        if (parent.self < 0) parent.self = 0;// 四舍五入的原因
+        // 加入到父节点
         if (!parent.children) parent.children = [];
         parent.children.push(item);
 
-        // 在父节点
+        // 在父节点中减去当前节点的总耗时
+        parent.self -= item.total;
+        if (parent.self < 0) parent.self = 0;// 四舍五入的原因
     }
 
     // 解析子节点

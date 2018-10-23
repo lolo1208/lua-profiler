@@ -95,7 +95,7 @@ const drawTimeline = function () {
 
     // 查看当前帧
     if (isCurrent) {
-        if (curClientItemInfo.connected)
+        if (curClientItemInfo && curClientItemInfo.connected)
             cavansDiv.scrollLeft = cavansDiv.scrollWidth;// 滚动到最后
         beginX = currentX = totalFrames - 1;
     }
