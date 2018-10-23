@@ -61,11 +61,15 @@ iojs.lib : fatal error LNK1106.
 
 - 先运行本程序，选择 TCP/UDP 协议，输入要绑定的端口号，点击启动按钮。
 
-- 在游戏中调用代码：[c#]ShibaInu.LuaProfiler.Console() 打开控制台界面（图1）。
+- 在游戏中调用代码：[c#]ShibaInu.LuaProfiler.Console() 打开控制台。
 
-- 输入 IP 和 端口，选择对应的协议，点击 BEGIN 按钮连接到程序，开始数据收集（图2）。
+- 输入 IP 和 端口，选择对应的协议，点击 BEGIN 按钮连接到程序，开始数据收集。
+
+###### 游戏中的控制台界面：
 
 ![console](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/1.jpg)
+
+###### 程序运行时界面：
 
 ![app](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/2.png)
 
