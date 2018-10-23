@@ -9,16 +9,6 @@
    - Unity [C#](https://github.com/lolo1208/unity3d-lolo/tree/master/Assets/Framework/ShibaInu/Utils/Profiling) 以及 [Lua](https://github.com/lolo1208/unity3d-lolo/blob/master/Assets/Framework/ShibaInu/Lua/Utils/Optimize/Profiler.lua)
 
 
-## 运行时截图
-在游戏中调用代码：[c#]ShibaInu.LuaProfiler.Console() 打开控制台界面。
-
-![console](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/1.jpg)
-
-点击 BEGIN 连接到本程序，开始数据收集。
-
-![app](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/2.png)
-
-
 ## To Use
 
 To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
@@ -65,4 +55,17 @@ iojs.lib : fatal error LNK1106.
 可能是由于 iojs.lib 文件没下载完整造成的。
 
 手动下载 [iojs.lib](https://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist/v2.0.11/win-x64/iojs.lib) 放到 C:/Users/[用户名]/.electron-gyp/.node-gyp/iojs-2.0.11/x64/ 目录中
+
+
+## 运行时截图
+
+- 先运行本程序，选择 TCP/UDP 协议，输入要绑定的端口号，点击启动按钮。
+
+- 在游戏中调用代码：[c#]ShibaInu.LuaProfiler.Console() 打开控制台界面。
+
+![console](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/1.jpg)
+
+- 输入 IP 和 端口，选择对应的协议，点击 BEGIN 按钮连接到程序，开始数据收集。
+
+![app](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/2.png)
 
