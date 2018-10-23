@@ -39,13 +39,13 @@ npm run pack
 
 以 Windows x64 为例：
 
-#####* 下载 electron 模块速度过慢或连接超时。
+#### * 下载 electron 模块速度过慢或连接超时。
 添加镜像地址到环境变量：
 ```
 ELECTRON_MIRROR = https://npm.taobao.org/mirrors/electron/
 ```
 
-#####* 运行 rebuild 时报错
+#### * 运行 rebuild 时报错
 iojs.lib : fatal error LNK1106.
 
 可能是由于 iojs.lib 文件没下载完整造成的。
