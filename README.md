@@ -6,7 +6,7 @@
 
 数据收集可参考:
 
-   - Unity [C#](https://github.com/lolo1208/unity3d-lolo/tree/master/Assets/Framework/ShibaInu/Utils/Profiling) 以及 [Lua](https://github.com/lolo1208/unity3d-lolo/blob/master/Assets/Framework/ShibaInu/Lua/Utils/Optimize/Profiler.lua)
+   - Unity（ToLua） [C#](https://github.com/lolo1208/unity3d-lolo/tree/master/Assets/Framework/ShibaInu/Utils/Profiling) 以及 [Lua](https://github.com/lolo1208/unity3d-lolo/blob/master/Assets/Framework/ShibaInu/Lua/Utils/Optimize/Profiler.lua)
 
 
 ## To Use
