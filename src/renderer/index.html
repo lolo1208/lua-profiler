@@ -83,9 +83,12 @@
                 Overview <i class="el-icon-arrow-up"></i>
                 <p id="details-line"></p>
             </div>
+
+            <el-tooltip class="item" effect="dark" content="总耗时：微秒" placement="top-end">
             <div class="details-item-title-time" onclick="changeDetailsSort('total', this)">
                 <i class="el-icon-arrow-down" style="display: none;"></i> Total
             </div>
+            </el-tooltip>
             <div class="details-item-title-time" onclick="changeDetailsSort('self', this)">
                 <i class="el-icon-arrow-down" style="display: none;"></i> Self
             </div>

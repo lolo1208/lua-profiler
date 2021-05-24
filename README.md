@@ -1,6 +1,4 @@
-# Lua Profiler
-
-本程序用于统计和展现 Lua 代码耗时以及调用次数。
+[本程序](https://github.com/lolo1208/lua-profiler) 用于统计和展现 Lua 代码耗时以及调用次数。
 
 基于 [electron](https://github.com/electron/electron) 和 [element-ui](https://github.com/ElemeFE/element) 实现，可运行在 Windows 和 MacOS。
 
@@ -54,22 +52,20 @@ iojs.lib : fatal error LNK1106.
 
 可能是由于 iojs.lib 文件没下载完整造成的。
 
-手动下载 [iojs.lib](https://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist/v2.0.11/win-x64/iojs.lib) 放到 C:/Users/[用户名]/.electron-gyp/.node-gyp/iojs-2.0.11/x64/ 目录中
+手动下载 [iojs.lib](https://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist/v2.0.11/win-x64/iojs.lib) 放到 `C:/Users/[用户名]/.electron-gyp/.node-gyp/iojs-2.0.11/x64/` 目录中
 
 
 ## 运行时截图
 
 - 先运行本程序，选择 TCP/UDP 协议，输入要绑定的端口号，点击启动按钮。
 
-- 在游戏中调用代码：[c#]ShibaInu.LuaProfiler.Console() 打开控制台。
+- 在游戏中调用代码：`[c#]ShibaInu.LuaProfiler.Console()` 打开控制台。
 
 - 输入 IP 和 端口，选择对应的协议，点击 BEGIN 按钮连接到程序，开始数据收集。
 
 ###### 游戏中的控制台界面：
-
-![console](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/1.jpg)
+![](https://blog.lolo.link/img/unity/lua-profiler/screenshot-1.jpg)
 
 ###### 程序运行时界面：
-
-![app](https://raw.githubusercontent.com/lolo1208/lua-profiler/master/images/screenshots/2.png)
+![](https://blog.lolo.link/img/unity/lua-profiler/screenshot-2.png)
 
