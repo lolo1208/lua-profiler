@@ -64,8 +64,8 @@ iojs.lib : fatal error LNK1106.
 - 输入 IP 和 端口，选择对应的协议，点击 BEGIN 按钮连接到程序，开始数据收集。
 
 ###### 游戏中的控制台界面：
-![](https://blog.lolo.link/img/unity/lua-profiler/screenshot-1.jpg)
+![](https://static.lolo.link/img/unity/lua-profiler/screenshot-1.jpg)
 
 ###### 程序运行时界面：
-![](https://blog.lolo.link/img/unity/lua-profiler/screenshot-2.png)
+![](https://static.lolo.link/img/unity/lua-profiler/screenshot-2.png)
 
