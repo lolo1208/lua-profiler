@@ -24,7 +24,7 @@
     "electron-rebuild": "^1.8.2"
   },
   "dependencies": {
-    "electron": "^2.0.0",
+    "electron": "^15.5.5",
     "element-ui": "^2.4.8",
     "node-kcp": "^1.0.9",
     "vue": "^2.5.17"
